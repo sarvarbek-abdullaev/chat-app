@@ -61,7 +61,7 @@ const InitialModal = () => {
           <DialogTitle className="text-2xl text-center font-bold">
             Customize your server
           </DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="text-center">
             Give your server a name. You can always change it later.
           </DialogDescription>
         </DialogHeader>

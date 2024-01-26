@@ -1,11 +1,13 @@
-import {FC, ReactNode} from "react";
+import { FC, ReactNode } from "react";
 
-interface  LayoutProps {
-    children: ReactNode
+interface LayoutProps {
+  children: ReactNode;
 }
 
-const Layout : FC<LayoutProps> = ({ children }) => {
-    return children
-}
+const Layout: FC<LayoutProps> = ({ children }) => {
+  return (
+    <div className="flex items-center justify-center h-full">{children}</div>
+  );
+};
 
-export default Layout
+export default Layout;
