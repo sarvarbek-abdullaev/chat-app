@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { ServerWithMembersWithRoles } from "@/types";
+import { ChannelType } from "@prisma/client";
 
 export type ModalType =
   | "createServer"
@@ -12,6 +13,7 @@ export type ModalType =
 
 interface ModalData {
   server?: ServerWithMembersWithRoles;
+  channelType?: ChannelType;
 }
 
 interface ModalStore {
