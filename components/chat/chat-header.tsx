@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Hash } from "lucide-react";
 import MobileToggle from "@/components/mobile-toggle";
+import { UserAvatar } from "@/components/user-avatar";
 
 interface ChatHeaderProps {
   serverId: string;
@@ -20,6 +21,9 @@ const ChatHeader: FC<ChatHeaderProps> = ({
       <MobileToggle serverId={serverId} />
       {type === "channel" && (
         <Hash className="h-4 w-4 text-zinc-500 dark:text-zinc-400 mr-2" />
+      )}
+      {type === "conversation" && (
+        <UserAvatar src={imageUrl} className="mr-2" />
       )}
       <p className="font-semibold text-md text-black dark:text-white">{name}</p>
     </div>
