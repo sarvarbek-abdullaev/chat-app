@@ -50,9 +50,9 @@ const ServerSearch: FC<ServerSearchProps> = ({ data }) => {
   }) => {
     setOpen(false);
     if (type === "member")
-      return router.push(`/servers/${params.serverId}/conversation/${id}`);
+      return router.push(`/servers/${params?.serverId}/conversation/${id}`);
 
-    router.push(`/servers/${params.serverId}/channels/${id}`);
+    router.push(`/servers/${params?.serverId}/channels/${id}`);
   };
 
   return (

@@ -8,8 +8,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponseServerIO,
 ) {
-  //
-  if (req.method === "POST" || req.method === "DELETE")
+  if (req.method !== "PATCH" && req.method !== "DELETE")
     return res.status(405).json({ message: "Method not allowed" });
 
   try {
@@ -26,11 +25,6 @@ export default async function handler(
 
     if (!channelId)
       return res.status(400).json({ message: "Missing ChannelId" });
-
-    const { content, fileUrl } = JSON.parse(req.body);
-
-    if (!content && !fileUrl)
-      return res.status(400).json({ message: "Missing Content" });
 
     const server = await db.server.findFirst({
       where: {
@@ -95,6 +89,8 @@ export default async function handler(
         },
         data: {
           deleted: true,
+          content: "This message was deleted.",
+          fileUrl: null,
         },
         include: {
           member: {
@@ -108,6 +104,8 @@ export default async function handler(
       return res.status(200).json({ message });
     } else if (req.method === "PATCH") {
       if (!isOwner) return res.status(401).json({ message: "Unauthorized" });
+
+      const { content } = JSON.parse(req.body);
 
       message = await db.message.update({
         where: {
