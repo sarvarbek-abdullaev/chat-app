@@ -100,8 +100,6 @@ export default async function handler(
           },
         },
       });
-
-      return res.status(200).json({ message });
     } else if (req.method === "PATCH") {
       if (!isOwner) return res.status(401).json({ message: "Unauthorized" });
 
@@ -122,8 +120,6 @@ export default async function handler(
           },
         },
       });
-
-      return res.status(200).json({ message });
     }
 
     const updateKey = `chat:${channelId}:messages:update`;
